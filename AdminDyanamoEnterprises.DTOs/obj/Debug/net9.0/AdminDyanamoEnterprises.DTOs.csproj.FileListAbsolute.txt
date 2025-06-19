@@ -1,0 +1,12 @@
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.DTOs\bin\Debug\net9.0\AdminDyanamoEnterprises.DTOs.deps.json
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.DTOs\bin\Debug\net9.0\AdminDyanamoEnterprises.DTOs.dll
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.DTOs\bin\Debug\net9.0\AdminDyanamoEnterprises.DTOs.pdb
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.DTOs\obj\Debug\net9.0\AdminDyanamoEnterprises.DTOs.GeneratedMSBuildEditorConfig.editorconfig
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.DTOs\obj\Debug\net9.0\AdminDyanamoEnterprises.DTOs.AssemblyInfoInputs.cache
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.DTOs\obj\Debug\net9.0\AdminDyanamoEnterprises.DTOs.AssemblyInfo.cs
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.DTOs\obj\Debug\net9.0\AdminDyanamoEnterprises.DTOs.csproj.CoreCompileInputs.cache
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.DTOs\obj\Debug\net9.0\AdminDyanamoEnterprises.DTOs.sourcelink.json
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.DTOs\obj\Debug\net9.0\AdminDyanamoEnterprises.DTOs.dll
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.DTOs\obj\Debug\net9.0\refint\AdminDyanamoEnterprises.DTOs.dll
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.DTOs\obj\Debug\net9.0\AdminDyanamoEnterprises.DTOs.pdb
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.DTOs\obj\Debug\net9.0\ref\AdminDyanamoEnterprises.DTOs.dll

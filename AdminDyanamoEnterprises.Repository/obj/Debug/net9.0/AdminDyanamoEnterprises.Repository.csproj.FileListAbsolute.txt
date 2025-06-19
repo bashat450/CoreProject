@@ -1,0 +1,16 @@
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\bin\Debug\net9.0\AdminDyanamoEnterprises.Repository.deps.json
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\bin\Debug\net9.0\AdminDyanamoEnterprises.Repository.dll
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\bin\Debug\net9.0\AdminDyanamoEnterprises.Repository.pdb
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\bin\Debug\net9.0\AdminDyanamoEnterprises.DTOs.dll
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\bin\Debug\net9.0\AdminDyanamoEnterprises.DTOs.pdb
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\obj\Debug\net9.0\AdminDyanamoEnterprises.Repository.csproj.AssemblyReference.cache
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\obj\Debug\net9.0\AdminDyanamoEnterprises.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\obj\Debug\net9.0\AdminDyanamoEnterprises.Repository.AssemblyInfoInputs.cache
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\obj\Debug\net9.0\AdminDyanamoEnterprises.Repository.AssemblyInfo.cs
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\obj\Debug\net9.0\AdminDyanamoEnterprises.Repository.csproj.CoreCompileInputs.cache
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\obj\Debug\net9.0\AdminDyanamoEnterprises.Repository.sourcelink.json
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\obj\Debug\net9.0\AdminDya.8FD71756.Up2Date
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\obj\Debug\net9.0\AdminDyanamoEnterprises.Repository.dll
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\obj\Debug\net9.0\refint\AdminDyanamoEnterprises.Repository.dll
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\obj\Debug\net9.0\AdminDyanamoEnterprises.Repository.pdb
+C:\BashatParweeen\Core Project\AdminDyanamoEnterprises-Material\AdminDyanamoEnterprises.Repository\obj\Debug\net9.0\ref\AdminDyanamoEnterprises.Repository.dll
