@@ -1,4 +1,4 @@
-﻿let materialId = 0;
+let materialId = 0;
 
 $(document).on('click', '.edit-material', function (e) {
     debugger
@@ -22,7 +22,7 @@ $(document).on('click', '.delete-material', function () {
 $('#confirmDeleteBtn').click(function () {
     let token = $('input[name="__RequestVerificationToken"]').val();
     $.ajax({
-        url: '/MaterialType/Delete',
+        url: '/Master/DeleteMaterial',
         type: 'POST',
         data: {
             id: materialId
