@@ -1,4 +1,4 @@
-﻿let fabricId = 0;
+let fabricId = 0;
 
 $(document).on('click', '.edit-fabric', function (e) {
     debugger
@@ -22,7 +22,7 @@ $(document).on('click', '.delete-fabric', function () {
 $('#confirmDeleteBtn').click(function () {
     let token = $('input[name="__RequestVerificationToken"]').val();
     $.ajax({
-        url: '/FabricType/Delete',
+        url: '/Master/DeleteFabric',
         type: 'POST',
         data: {
             id: fabricId
