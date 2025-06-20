@@ -1,0 +1,226 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box d-md-flex justify-content-md-between align-items-center">
+                <h4 class="page-title">Customers</h4>
+                <div class="">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item">
+                            <a href="#">Mifty</a>
+                        </li><!--end nav-item-->
+                        <li class="breadcrumb-item">
+                            <a href="#">Analytics</a>
+                        </li><!--end nav-item-->
+                        <li class="breadcrumb-item active">Customers</li>
+                    </ol>
+                </div>
+            </div><!--end page-title-box-->
+        </div><!--end col-->
+    </div><!--end row-->
+    <div class="row">
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-9">
+                            <p class="text-dark mb-0 fw-semibold fs-14">Twitter</p>
+                            <h3 class="mt-2 mb-0 fw-bold">2215 <span class="fs-13 text-muted">Click</span> </h3>
+                        </div><!--end col-->
+                        <div class="col-3 align-self-center">
+                            <div class="d-flex justify-content-center align-items-center thumb-xl bg-secondary rounded-circle mx-auto">
+                                <i class="icofont-twitter h1 align-self-center mb-0 text-white"></i>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-9">
+                            <p class="text-dark mb-0 fw-semibold fs-14">Google</p>
+                            <h3 class="mt-2 mb-0 fw-bold">2154 <span class="fs-13 text-muted">Click</span> </h3>
+                        </div><!--end col-->
+                        <div class="col-3 align-self-center">
+                            <div class="d-flex justify-content-center align-items-center thumb-xl bg-danger rounded-circle mx-auto">
+                                <i class="icofont-google-plus h1 align-self-center mb-0 text-white"></i>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-9">
+                            <p class="text-dark mb-0 fw-semibold fs-14">Instagram</p>
+                            <h3 class="mt-2 mb-0 fw-bold">3251 <span class="fs-13 text-muted">Click</span> </h3>
+                        </div><!--end col-->
+                        <div class="col-3 align-self-center">
+                            <div class="d-flex justify-content-center align-items-center thumb-xl bg-warning rounded-circle mx-auto">
+                                <i class="icofont-instagram h1 align-self-center mb-0 text-white"></i>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-9">
+                            <p class="text-dark mb-0 fw-semibold fs-14">Facebook</p>
+                            <h3 class="mt-2 mb-0 fw-bold">5521 <span class="fs-13 text-muted">Click</span> </h3>
+                        </div><!--end col-->
+                        <div class="col-3 align-self-center">
+                            <div class="d-flex justify-content-center align-items-center thumb-xl bg-blue rounded-circle mx-auto">
+                                <i class="icofont-facebook h1 align-self-center mb-0 text-white"></i>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div> <!--end col-->
+    </div><!--end row-->
+    <div class="row">
+        <div class="col-md-12 col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h4 class="card-title">Customers Growth</h4>
+                        </div><!--end col-->
+                        <div class="col-auto">
+                            <div class="dropdown">
+                                <a href="#" class="btn bt btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="icofont-calendar fs-5 me-1"></i> This Year<i class="las la-angle-down ms-1"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="#">Today</a>
+                                    <a class="dropdown-item" href="#">Last Week</a>
+                                    <a class="dropdown-item" href="#">Last Month</a>
+                                    <a class="dropdown-item" href="#">This Year</a>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                    </div>  <!--end row-->
+                </div><!--end card-header-->
+                <div class="card-body pt-0">
+                    <div id="customers-line" class="apex-charts mb-3"></div>
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div> <!--end col-->
+        <div class="col-md-12 col-lg-4">
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-6">
+                    <div class="card mb-3 mb-lg-0">
+                        <div class="card-body text-center">
+                            <span class="fs-18 fw-semibold">38,321</span>
+                            <h6 class="text-uppercase text-muted my-2 m-0">Total Customers</h6>
+                            <div class="d-flex align-items-center">
+                                <div class="progress bg-primary-subtle w-100" style="height:5px;" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-primary" style="width: 65%"></div>
+                                </div>
+                                <small class="flex-shrink-1 ms-1">65%</small>
+                            </div>
+                        </div><!--end card-body-->
+                    </div> <!--end card-body-->
+                </div><!--end col-->
+                <div class="col-md-6 col-lg-6">
+                    <div class="card mb-3 mb-lg-0">
+                        <div class="card-body text-center">
+                            <span class="fs-18 fw-semibold">946</span>
+                            <h6 class="text-uppercase text-muted my-2 m-0">New Customers</h6>
+                            <div class="d-flex align-items-center">
+                                <div class="progress bg-primary-subtle w-100" style="height:5px;" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-primary" style="width: 38%"></div>
+                                </div>
+                                <small class="flex-shrink-1 ms-1">38%</small>
+                            </div>
+                        </div><!--end card-body-->
+                    </div> <!--end card-body-->
+                </div><!--end col-->
+
+                <div class="col-md-6 col-lg-6">
+                    <div class="card mb-3 mb-lg-0">
+                        <div class="card-body text-center">
+                            <span class="fs-18 fw-semibold">70.8%</span>
+                            <h6 class="text-uppercase text-muted my-2 m-0">Returning Customers</h6>
+                            <div class="d-flex align-items-center">
+                                <div class="progress bg-primary-subtle w-100" style="height:5px;" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-primary" style="width: 85%"></div>
+                                </div>
+                                <small class="flex-shrink-1 ms-1">85%</small>
+                            </div>
+                        </div><!--end card-body-->
+                    </div> <!--end card-->
+                </div><!--end col-->
+                <div class="col-md-6 col-lg-6">
+                    <div class="card mb-3 mb-lg-0">
+                        <div class="card-body text-center">
+                            <span class="fs-18 fw-semibold">1.5%</span>
+                            <h6 class="text-uppercase text-muted my-2 m-0">Bounce Rate</h6>
+                            <div class="d-flex align-items-center">
+                                <div class="progress bg-primary-subtle w-100" style="height:5px;" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-primary" style="width: 40%"></div>
+                                </div>
+                                <small class="flex-shrink-1 ms-1">40%</small>
+                            </div>
+                        </div><!--end card-body-->
+                    </div> <!--end card-body-->
+                </div><!--end col-->
+            </div><!--end row-->
+        </div> <!--end col-->
+    </div><!--end row-->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h4 class="card-title">Customers Details</h4>
+                        </div><!--end col-->
+                    </div>  <!--end row-->
+                </div><!--end card-header-->
+                <div class="card-body pt-0">
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Ext.</th>
+                                    <th>City</th>
+                                    <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
+                                    <th>Completion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="d-flex align-items-center">
+                                        <img src="assets/images/users/avatar-1.jpg" alt="" class="thumb-md rounded-circle me-1">
+                                        Unity Pugh
+                                    </td>
+                                    <td>9958</td>
+                                    <td>Curicó</td>
+                                    <td>2005/02/11</td>
+                                    <td>37%</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+</div><!-- container -->
