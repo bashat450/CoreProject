@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AdminDyanamoEnterprises.DTOs.Master.BlogsModel>
+
+<input type="text" id="search" placeholder="Search..." class="form-control mb-2" />
+<a href="/Blogs/Create" class="btn btn-success mb-2">+ Add Product</a>
+
+<table class="table table-bordered" id="blogsTable">
+    <thead>
+        <tr>
+            @* <th><input type="checkbox" id="selectAll" /></th> *@
+            <th>Title</th>
+            <th>Category</th>
+            <th>Author</th>
+            <th>Published</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src=" @Url.Content("~/" + item.ImageUrl)" alt="Blog Image" width="50" height="50" style="object-fit:cover; margin-right:10px;" />
+                    @item.Title
+                </td>
+                <td>@item.Category</td>
+                <td>@item.Author</td>
+                <td>
+                    <input type="checkbox" class="publish-toggle" data-id="@item.BlogId" @(item.Published ? "checked" : "") />
+                    <span class="publish-status @(item.Published ? "text-success" : "text-danger")">
+                        @(item.Published ? "Published" : "Not Published")
+                    </span>
+                </td>
+
+                <td>
+                    <a href="/Blogs/Edit/@item.BlogId" class="btn btn-primary mb-2">Edit</a> |
+                    <a href="/Blogs/Delete/@item.BlogId" class="btn btn-danger mb-2">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
