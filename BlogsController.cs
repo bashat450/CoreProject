@@ -1,4 +1,4 @@
-﻿using AdminDyanamoEnterprises.DTOs.Master;
+using AdminDyanamoEnterprises.DTOs;
 using AdminDyanamoEnterprises.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +21,7 @@ namespace AdminDyanamoEnterprises.Controllers
         }
 
         // GET: /Blogs/Create
-        public IActionResult Create()
+        public IActionResult AddBlog()
         {
             return View();
         }
@@ -29,33 +29,72 @@ namespace AdminDyanamoEnterprises.Controllers
         // POST: /Blogs/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(BlogsModel model)
+        public IActionResult AddBlog(BlogsModel model, IFormFile imageFile)
         {
             if (ModelState.IsValid)
             {
+                if (imageFile != null && imageFile.Length > 0)
+                {
+                    var fileName = Path.GetFileName(imageFile.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        imageFile.CopyTo(stream);
+                    }
+
+                    model.ImageUrl = "uploads/" + fileName; // Save relative path
+                }
+
                 _repository.InsertBlog(model);
                 return RedirectToAction("List");
             }
+
             return View(model);
         }
 
+
         // GET: /Blogs/Edit/{id}
-        public IActionResult Edit(int id)
+        public IActionResult EditBlog(int id)
         {
             var blog = _repository.GetBlogById(id);
             return View(blog);
         }
 
         [HttpPost]
-        public IActionResult Edit(BlogsModel model)
+        [ValidateAntiForgeryToken]
+        public IActionResult EditBlog(BlogsModel model, IFormFile imageFile)
         {
             if (ModelState.IsValid)
             {
+                if (imageFile != null && imageFile.Length > 0)
+                {
+                    var fileName = Path.GetFileName(imageFile.FileName);
+                    var uploadsPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+
+                    if (!Directory.Exists(uploadsPath))
+                    {
+                        Directory.CreateDirectory(uploadsPath);
+                    }
+
+                    var filePath = Path.Combine(uploadsPath, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        imageFile.CopyTo(stream);
+                    }
+
+                    // Save relative path for display
+                    model.ImageUrl = "uploads/" + fileName;
+                }
+
                 _repository.UpdateBlog(model);
                 return RedirectToAction("List");
             }
+
             return View(model);
         }
+
 
 
         [HttpPost]
@@ -73,8 +112,7 @@ namespace AdminDyanamoEnterprises.Controllers
             return RedirectToAction("List");
         }
 
-
-
+        // Optional: GET /Blogs/Details/{id}
         public IActionResult Details(int id)
         {
             var blog = _repository.GetBlogById(id);
