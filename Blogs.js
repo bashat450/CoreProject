@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+$(document).ready(function () {
     // 🔍 Search filter
     $("#search").on("keyup", function () {
         var value = $(this).val().toLowerCase();
