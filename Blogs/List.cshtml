@@ -1,0 +1,128 @@
+﻿@model IEnumerable<AdminDyanamoEnterprises.DTOs.BlogsModel>
+
+<input type="text" id="search" placeholder="Search..." class="form-control mb-2" />
+<a href="/Blogs/AddBlog" class="btn btn-success mb-2">+ Add New Blog</a>
+
+<table class="table table-bordered" id="blogsTable">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Author</th>
+            <th>Published</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@Url.Content("~/" + item.ImageUrl)" alt="Blog Image"
+                         width="50" height="50" style="object-fit:cover; margin-right:10px;" />
+                    @item.Title
+                </td>
+                <td>@item.Category</td>
+                <td>@item.Author</td>
+                <td>
+                    <input type="checkbox" class="publish-toggle" data-id="@item.BlogId" @(item.Published ? "checked" : "") />
+                    <span class="publish-status @(item.Published ? "text-success" : "text-danger")">
+                        @(item.Published ? "Published" : "Not Published")
+                    </span>
+                </td>
+                <td>
+                    <a href="@Url.Action("EditBlog", "Blogs", new { id = item.BlogId })" class="btn btn-primary btn-sm mb-2">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    |
+                    <button type="button"
+                            class="btn btn-danger btn-sm mb-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#confirmModal"
+                            data-blog-id="@item.BlogId"
+                            data-blog-title="@item.Title">
+                        <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form method="post" asp-action="DeleteConfirmed">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="id" id="deleteBlogId" />
+
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="confirmModalLabel">Confirm Deletion</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p>Are you sure you want to delete <strong id="blogTitle"></strong>?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // 🔍 Search filter
+            $("#search").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#blogsTable tbody tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+
+            // ✅ Publish toggle via AJAX
+            $('.publish-toggle').on('change', function () {
+                var checkbox = $(this);
+                var blogId = checkbox.data('id');
+                var isChecked = checkbox.is(':checked');
+
+                $.ajax({
+                    url: '/Blogs/TogglePublish',
+                    type: 'POST',
+                    data: { id: blogId, published: isChecked },
+                    success: function () {
+                        var status = checkbox.closest('td').find('.publish-status');
+                        if (isChecked) {
+                            status.text('Published').removeClass('text-danger').addClass('text-success');
+                        } else {
+                            status.text('Not Published').removeClass('text-success').addClass('text-danger');
+                        }
+                    },
+                    error: function () {
+                        alert('Failed to update publish status.');
+                        checkbox.prop('checked', !isChecked);
+                    }
+                });
+            });
+
+            // 🗑️ Delete modal setup
+            var confirmModal = document.getElementById('confirmModal');
+            if (confirmModal) {
+                confirmModal.addEventListener('show.bs.modal', function (event) {
+                    var button = event.relatedTarget;
+                    var blogId = button.getAttribute('data-blog-id');
+                    var blogTitle = button.getAttribute('data-blog-title');
+
+                    document.getElementById('deleteBlogId').value = blogId;
+                    document.getElementById('blogTitle').textContent = blogTitle;
+                });
+            }
+        });
+    </script>
+}
+

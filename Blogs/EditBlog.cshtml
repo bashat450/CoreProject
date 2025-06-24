@@ -1,0 +1,299 @@
+﻿@model AdminDyanamoEnterprises.DTOs.BlogsModel
+
+@{
+    ViewData["Title"] = "Edit Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box d-md-flex justify-content-md-between align-items-center">
+                <h4 class="page-title">Edit Blog</h4>
+                <div>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="#">Mifty</a></li>
+                        <li class="breadcrumb-item"><a href="#">Apps</a></li>
+                        <li class="breadcrumb-item"><a href="@Url.Action("List", "Blogs")">Blogs</a></li>
+                        <li class="breadcrumb-item active">Edit Blog</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h4 class="card-title mb-0"><i class="fab fa-blogger me-2"></i>Edit Blog Information</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form asp-action="EditBlog" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                        
+                        <input asp-for="BlogId" type="hidden" />
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Title" class="form-label fw-semibold">
+                                    <i class="las la-heading me-1"></i>Blog Title <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Title" class="form-control" placeholder="Enter blog title..." />
+                                <span asp-validation-for="Title" class="text-danger small"></span>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Category" class="form-label fw-semibold">
+                                    <i class="las la-tag me-1"></i>Category <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Category" class="form-control" placeholder="Enter blog category..." />
+                                <span asp-validation-for="Category" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="PublishDate" class="form-label fw-semibold">
+                                    <i class="las la-calendar me-1"></i>Publish Date <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="PublishDate" class="form-control" type="date" />
+                                <span asp-validation-for="PublishDate" class="text-danger small"></span>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Author" class="form-label fw-semibold">
+                                    <i class="las la-user-edit me-1"></i>Author <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Author" class="form-control" placeholder="Enter author name..." />
+                                <span asp-validation-for="Author" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">
+                                    <i class="las la-image me-1"></i>Featured Image
+                                </label>
+                                <div class="input-group">
+                                    <input type="file" class="form-control" id="imageUpload" accept="image/*" name="imageFile" />
+                                    <button class="btn btn-outline-secondary" type="button" id="clearImage">
+                                        <i class="las la-times"></i>
+                                    </button>
+                                </div>
+                                <small class="text-muted">Optional: Upload a featured image for your blog post (JPG, PNG, GIF)</small>
+                                
+                                <!-- Current Image Display -->
+                                <div id="currentImage" class="mt-3" style="@(string.IsNullOrEmpty(Model?.ImageUrl) ? "display: none;" : "")">
+                                   
+                                    <div class="border rounded p-2 bg-light">
+                                        <label class="form-label fw-semibold small">Current Image:</label>
+                                        <div class="text-center position-relative">
+                                            <img id="currentImg" src="@Url.Content("~/" + Model.ImageUrl)" alt="Current Image" class="img-fluid rounded" style="max-height: 200px; max-width: 100%;" />
+                                        </div>
+                                        <div class="mt-2">
+                                            <small class="text-muted">
+                                                <strong>Current featured image</strong>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Image Preview -->
+                                <div id="imagePreview" class="mt-3" style="display: none;">
+                                    <div class="border rounded p-2 bg-light">
+                                        <label class="form-label fw-semibold small">New Preview:</label>
+                                        <div class="text-center position-relative">
+                                            <img id="previewImg" src="" alt="Image Preview" class="img-fluid rounded" style="max-height: 200px; max-width: 100%;" />
+                                        </div>
+                                        <div class="mt-2">
+                                            <small class="text-muted">
+                                                <strong>File:</strong> <span id="fileName"></span> | 
+                                                <strong>Size:</strong> <span id="fileSize"></span>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input asp-for="ImageUrl" type="hidden" id="hiddenImageUrl" />
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">
+                                    <i class="las la-toggle-on me-1"></i>Publication Status
+                                </label>
+                                <div class="form-check form-switch mt-2">
+                                    <input class="form-check-input form-switch-success" asp-for="Published" id="publishedSwitch" />
+                                    <label class="form-check-label fw-medium" for="publishedSwitch">
+                                        <span id="publishStatus">@(Model?.Published == true ? "Published" : "Draft")</span>
+                                    </label>
+                                </div>
+                                <small class="text-muted">Toggle to publish immediately or save as draft</small>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <label asp-for="Description" class="form-label fw-semibold">
+                                    <i class="las la-align-left me-1"></i>Blog Content <span class="text-danger">*</span>
+                                </label>
+                                <textarea asp-for="Description" class="form-control" rows="8" 
+                                          placeholder="Write your blog content here... You can use HTML formatting if needed."></textarea>
+                                <span asp-validation-for="Description" class="text-danger small"></span>
+                                <small class="text-muted">Write the main content of your blog post</small>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="d-flex gap-2 justify-content-end">
+                                    <a asp-action="List" class="btn btn-light">
+                                        <i class="las la-arrow-left me-1"></i>Back to List
+                                    </a>
+                                    <button type="reset" class="btn btn-outline-secondary">
+                                        <i class="las la-undo me-1"></i>Reset Form
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="las la-save me-1"></i>Update Blog
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        // Toggle publish status text
+        document.getElementById('publishedSwitch').addEventListener('change', function() {
+            const statusText = document.getElementById('publishStatus');
+            statusText.textContent = this.checked ? 'Published' : 'Draft';
+        });
+        
+        // Set initial status text
+        document.addEventListener('DOMContentLoaded', function() {
+            const publishSwitch = document.getElementById('publishedSwitch');
+            const statusText = document.getElementById('publishStatus');
+            statusText.textContent = publishSwitch.checked ? 'Published' : 'Draft';
+        });
+
+        // Image upload and preview functionality
+        document.getElementById('imageUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                // Validate file type
+                if (!file.type.startsWith('image/')) {
+                    alert('Please select a valid image file (JPG, PNG, GIF)');
+                    this.value = '';
+                    return;
+                }
+
+                // Validate file size (max 5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size must be less than 5MB');
+                    this.value = '';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('previewImg').src = e.target.result;
+                    document.getElementById('fileName').textContent = file.name;
+                    document.getElementById('fileSize').textContent = formatFileSize(file.size);
+                    document.getElementById('imagePreview').style.display = 'block';
+                    
+                    // Hide current image when new image is selected
+                    document.getElementById('currentImage').style.display = 'none';
+                    
+                    // Store the base64 data in hidden field for form submission
+                    document.getElementById('hiddenImageUrl').value = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Clear image functionality
+        document.getElementById('clearImage').addEventListener('click', function() {
+            document.getElementById('imageUpload').value = '';
+            document.getElementById('imagePreview').style.display = 'none';
+            
+            // Show current image again if it exists
+            const currentImage = document.getElementById('currentImage');
+            const currentImg = document.getElementById('currentImg');
+            if (currentImg.src && currentImg.src !== window.location.href) {
+                currentImage.style.display = 'block';
+                // Reset hidden field to original value
+                document.getElementById('hiddenImageUrl').value = currentImg.src;
+            } else {
+                currentImage.style.display = 'none';
+                document.getElementById('hiddenImageUrl').value = '';
+            }
+        });
+
+        // Format file size helper function
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Drag and drop functionality
+        const uploadArea = document.getElementById('imageUpload');
+        
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            uploadArea.classList.add('border-primary');
+        }
+
+        function unhighlight(e) {
+            uploadArea.classList.remove('border-primary');
+        }
+
+        uploadArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            
+            uploadArea.files = files;
+            const event = new Event('change', { bubbles: true });
+            uploadArea.dispatchEvent(event);
+        }
+
+        // Initialize hidden field with current image URL on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentImg = document.getElementById('currentImg');
+            const hiddenField = document.getElementById('hiddenImageUrl');
+            if (currentImg && currentImg.src && currentImg.src !== window.location.href) {
+                hiddenField.value = currentImg.src;
+            }
+        });
+    </script>
+}
